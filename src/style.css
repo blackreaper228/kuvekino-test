@@ -1317,3 +1317,10 @@ video {
     max-width: 80%;
   }
 }
+
+
+@media (max-width: 1001px) {
+.M_SectionColumnRow.Arenda.U_TextBlock {
+    /* padding: 24px 0px; */
+  }
+}
