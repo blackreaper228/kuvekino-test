@@ -1,3 +1,39 @@
+@import 'tailwindcss';
+
+:root {
+  --black: #000000;
+  --pikBlack: #181818;
+  --white: #ffffff;
+
+  --lightGrey: #f7f7f7;
+  --grey: #888888;
+
+  /* stroke */
+  --stroke-light: #dddddd;
+  --stroke-dark: #3a3a3a;
+
+  /* park */
+  --senkino-color: #9ca8af;
+  --balashiha-color: #4f98a3;
+  --kuvekino-color: #bdb7aa;
+  --sokolovo-color: #a65b61;
+  --tokarevo-color: #8a7f8e;
+  --butovo-color: #949e8c;
+
+  /* переменные Матвея */
+  --color-primary: #000;
+  --secondary-light: #f7f7f7;
+
+  --parametr-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .O_Offers {
   display: flex;
   flex-direction: column;
@@ -828,8 +864,7 @@ th,
 td,
 video {
   margin: 0;
-  padding: 0;
-  border: 0;
+  
 }
 .U_Invert {
   filter: invert(1);

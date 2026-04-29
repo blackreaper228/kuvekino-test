@@ -2,6 +2,7 @@ import "./bigStyle.css";
 import "./style.css";
 import "./js/table.js";
 import "./js/history.js";
+import "./js/accordion.js";
 
 //вывод текущего года в футере
 
