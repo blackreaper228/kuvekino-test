@@ -1,15 +1,13 @@
 @font-face {
-  font-family: "TT Firs Neue";
-  src: url("https://static.tildacdn.com/tild3761-6331-4234-b039-346630363437/TTFirsNeue-Regular.woff")
-    format("woff");
+  font-family: 'TT Firs Neue';
+  src: url('https://static.tildacdn.com/tild3761-6331-4234-b039-346630363437/TTFirsNeue-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "TT Firs Neue";
-  src: url("https://static.tildacdn.com/tild3038-3936-4734-a664-643863393164/TTFirsNeue-Medium.woff")
-    format("woff");
+  font-family: 'TT Firs Neue';
+  src: url('https://static.tildacdn.com/tild3038-3936-4734-a664-643863393164/TTFirsNeue-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
 }
@@ -24,8 +22,7 @@
   --project-color: #bdb7aa;
   --main-width: 1440px;
   /* Font Variables */
-  --font-family-base: "TT Firs Neue", Inter, system-ui, Avenir, Helvetica, Arial,
-    sans-serif;
+  --font-family-base: 'TT Firs Neue', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   --font-weight-normal: 400;
   --font-weight-bold: 500;
   --font-size-small: 13px;
@@ -240,7 +237,7 @@ a {
 }
 .A_NavbarItemBurgerLink {
   width: 100%;
-  font-family: "TT Firs Neue";
+  font-family: 'TT Firs Neue';
   font-weight: 500;
   font-size: 38px;
   border-bottom: 1px solid var(--border-color-black);
@@ -704,11 +701,7 @@ a {
 .U_HoverAnimation {
   position: relative;
   bottom: -160px;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 1) -12.17%,
-    rgba(0, 0, 0, 0) 93.67%
-  );
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) -12.17%, rgba(0, 0, 0, 0) 93.67%);
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -718,11 +711,7 @@ a {
 }
 .U_HoverAnimationOpen {
   bottom: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 1) -12.17%,
-    rgba(0, 0, 0, 0) 93.67%
-  );
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) -12.17%, rgba(0, 0, 0, 0) 93.67%);
 }
 .U_DesktopCard {
   overflow: hidden;
@@ -1921,7 +1910,7 @@ a {
 }
 
 .custom-form__checkbox-input:checked ~ .custom-form__checkbox-icon::after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   top: 2px;
@@ -1973,7 +1962,7 @@ a {
 }
 
 .custom-form__btn_sending:after {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;

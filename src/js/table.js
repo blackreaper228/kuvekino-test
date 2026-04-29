@@ -1,4 +1,4 @@
-const SHEET_ID = "1CSeA_83ijKQOHEIa1b3w_3T0_llMXneEY4QzymspwsE";
+const SHEET_ID = '1CSeA_83ijKQOHEIa1b3w_3T0_llMXneEY4QzymspwsE';
 
 const CSV_URLS = [
   `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`,
@@ -17,12 +17,12 @@ async function fetchTableData() {
 
     try {
       const response = await fetch(url, {
-        method: "GET",
+        method: 'GET',
         headers: {
-          Accept: "text/csv,text/plain,*/*",
+          Accept: 'text/csv,text/plain,*/*',
         },
-        mode: "cors",
-        redirect: "follow",
+        mode: 'cors',
+        redirect: 'follow',
       });
 
       if (!response.ok) continue;
@@ -31,7 +31,7 @@ async function fetchTableData() {
 
       if (!csvText || csvText.trim().length === 0) continue;
 
-      if (csvText.trim().startsWith("<")) continue;
+      if (csvText.trim().startsWith('<')) continue;
 
       const data = parseCSV(csvText);
 
@@ -47,7 +47,7 @@ async function fetchTableData() {
 }
 
 function parseCSV(csvText) {
-  const lines = csvText.trim().split("\n");
+  const lines = csvText.trim().split('\n');
 
   if (lines.length === 0) return [];
 
@@ -57,10 +57,10 @@ function parseCSV(csvText) {
   for (let i = 1; i < lines.length; i++) {
     const values = parseCSVLine(lines[i]);
 
-    if (values.some((value) => value.trim() !== "")) {
+    if (values.some((value) => value.trim() !== '')) {
       const row = {};
       headers.forEach((header, index) => {
-        row[header] = values[index] || "";
+        row[header] = values[index] || '';
       });
       data.push(row);
     }
@@ -71,7 +71,7 @@ function parseCSV(csvText) {
 
 function parseCSVLine(line) {
   const result = [];
-  let current = "";
+  let current = '';
   let inQuotes = false;
 
   for (let i = 0; i < line.length; i++) {
@@ -84,9 +84,9 @@ function parseCSVLine(line) {
       } else {
         inQuotes = !inQuotes;
       }
-    } else if (char === "," && !inQuotes) {
+    } else if (char === ',' && !inQuotes) {
       result.push(current.trim());
-      current = "";
+      current = '';
     } else {
       current += char;
     }
@@ -101,12 +101,12 @@ function formatTableData(data) {
     const keys = Object.keys(row);
 
     return {
-      building: row[keys[0]] || row["Здание"] || "",
-      area: row[keys[1]] || row["Площадь"] || "",
-      docks: row[keys[2]] || row["Доки"] || "",
-      parking: row[keys[3]] || row["Парковка"] || "",
-      date: row[keys[4]] || row["Дата"] || "",
-      price: row[keys[5]] || row["Стоимость"] || "",
+      building: row[keys[0]] || row['Здание'] || '',
+      area: row[keys[1]] || row['Площадь'] || '',
+      docks: row[keys[2]] || row['Доки'] || '',
+      parking: row[keys[3]] || row['Парковка'] || '',
+      date: row[keys[4]] || row['Дата'] || '',
+      price: row[keys[5]] || row['Стоимость'] || '',
     };
   });
 }
@@ -124,7 +124,7 @@ function createTableRow(rowData) {
   `;
 }
 
-function renderTable(data, containerId = "propertyTable") {
+function renderTable(data, containerId = 'propertyTable') {
   const container = document.getElementById(containerId);
 
   const visibleData = data.slice(0, visibleRows);
@@ -140,14 +140,10 @@ function renderTable(data, containerId = "propertyTable") {
           <div class="A_TableContent U_ProjectColor U_Uppercase U_Third U_MobileHide">Дата готовности</div>
           <div class="A_TableContent U_ProjectColor U_Uppercase U_Fifth">стоимость</div>
         </div>
-        ${visibleData.map(createTableRow).join("")}
+        ${visibleData.map(createTableRow).join('')}
       </div>
     </div>
-    ${
-      data.length > visibleRows
-        ? '<div class="W_TableButton"><div class="A_Button U_Secondary" onclick="showMoreRows()">Показать еще</div></div>'
-        : ""
-    }
+    ${data.length > visibleRows ? '<div class="W_TableButton"><div class="A_Button U_Secondary" onclick="showMoreRows()">Показать еще</div></div>' : ''}
   `;
 
   container.innerHTML = tableHTML;
@@ -155,7 +151,7 @@ function renderTable(data, containerId = "propertyTable") {
 
 function showMoreRows() {
   visibleRows += rowsPerPage;
-  renderTable(allData, "propertyTable");
+  renderTable(allData, 'propertyTable');
 }
 
 window.showMoreRows = showMoreRows;
@@ -165,7 +161,7 @@ async function initApp() {
     const rawData = await fetchTableData();
     allData = formatTableData(rawData);
     visibleRows = 10;
-    renderTable(allData, "propertyTable");
+    renderTable(allData, 'propertyTable');
   } catch (error) {}
 }
 
@@ -173,10 +169,10 @@ window.refreshTableData = async function () {
   await initApp();
 };
 
-document.addEventListener("DOMContentLoaded", initApp);
+document.addEventListener('DOMContentLoaded', initApp);
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initApp);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
 } else {
   initApp();
 }

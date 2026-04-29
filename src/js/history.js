@@ -4,9 +4,9 @@
  */
 
 (function () {
-  "use strict";
+  'use strict';
 
-  const SHEET_ID = "1CSeA_83ijKQOHEIa1b3w_3T0_llMXneEY4QzymspwsE";
+  const SHEET_ID = '1CSeA_83ijKQOHEIa1b3w_3T0_llMXneEY4QzymspwsE';
 
   // URL для листа "History" - используем правильный gid=151892420
   const HISTORY_CSV_URLS = [
@@ -14,7 +14,7 @@
     `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=151892420`,
   ];
   function isUrl(value) {
-    return /^https?:\/\/|^\/\//i.test(value || "");
+    return /^https?:\/\/|^\/\//i.test(value || '');
   }
 
   function isImageUrl(value) {
@@ -22,29 +22,29 @@
   }
 
   function escapeHTML(text) {
-    if (!text) return "";
+    if (!text) return '';
     return String(text).replace(
       /[&<>"']/g,
       (char) =>
         ({
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;",
-        }[char])
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;',
+        })[char]
     );
   }
   // Альтернативный метод для Tilda через JSONP
   function fetchHistoryDataViaJSONP() {
     return new Promise((resolve) => {
-      console.log("???? Пробуем альтернативный метод загрузки через JSONP...");
+      console.log('???? Пробуем альтернативный метод загрузки через JSONP...');
 
-      const script = document.createElement("script");
-      const callbackName = "historyCallback_" + Date.now();
+      const script = document.createElement('script');
+      const callbackName = 'historyCallback_' + Date.now();
 
       window[callbackName] = function (data) {
-        console.log("???? Получены данные через JSONP:", data);
+        console.log('???? Получены данные через JSONP:', data);
         document.head.removeChild(script);
         delete window[callbackName];
 
@@ -58,7 +58,7 @@
 
       script.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?gid=151892420&tqx=out:json&tq&callback=${callbackName}`;
       script.onerror = () => {
-        console.error("❌ JSONP метод не сработал");
+        console.error('❌ JSONP метод не сработал');
         document.head.removeChild(script);
         delete window[callbackName];
         resolve([]);
@@ -69,7 +69,7 @@
   }
 
   function convertGoogleSheetsToCSV(data) {
-    if (!data.table || !data.table.rows) return "";
+    if (!data.table || !data.table.rows) return '';
 
     const rows = data.table.rows;
     const csvLines = [];
@@ -81,20 +81,20 @@
           if (cell && cell.v !== null && cell.v !== undefined) {
             values.push('"' + String(cell.v).replace(/"/g, '""') + '"');
           } else {
-            values.push("");
+            values.push('');
           }
         });
       }
-      csvLines.push(values.join(","));
+      csvLines.push(values.join(','));
     });
 
-    return csvLines.join("\n");
+    return csvLines.join('\n');
   }
 
   let historyData = [];
 
   async function fetchHistoryData() {
-    console.log("???? Начинаем загрузку данных истории...");
+    console.log('???? Начинаем загрузку данных истории...');
 
     for (let i = 0; i < HISTORY_CSV_URLS.length; i++) {
       const url = HISTORY_CSV_URLS[i];
@@ -102,19 +102,15 @@
 
       try {
         const response = await fetch(url, {
-          method: "GET",
+          method: 'GET',
           headers: {
-            Accept: "text/csv,text/plain,*/*",
+            Accept: 'text/csv,text/plain,*/*',
           },
-          mode: "cors",
-          redirect: "follow",
+          mode: 'cors',
+          redirect: 'follow',
         });
 
-        console.log(
-          `???? Ответ от URL ${i + 1}:`,
-          response.status,
-          response.statusText
-        );
+        console.log(`???? Ответ от URL ${i + 1}:`, response.status, response.statusText);
 
         if (!response.ok) {
           console.log(`❌ URL ${i + 1} не отвечает`);
@@ -122,17 +118,14 @@
         }
 
         const csvText = await response.text();
-        console.log(
-          `???? Данные от URL ${i + 1}:`,
-          csvText.substring(0, 200) + "..."
-        );
+        console.log(`???? Данные от URL ${i + 1}:`, csvText.substring(0, 200) + '...');
 
         if (!csvText || csvText.trim().length === 0) {
           console.log(`❌ URL ${i + 1} вернул пустые данные`);
           continue;
         }
 
-        if (csvText.trim().startsWith("<")) {
+        if (csvText.trim().startsWith('<')) {
           console.log(`❌ URL ${i + 1} вернул HTML вместо CSV`);
           continue;
         }
@@ -149,12 +142,12 @@
       }
     }
 
-    console.log("❌ Все URL не сработали");
+    console.log('❌ Все URL не сработали');
     return [];
   }
 
   function parseCSV(csvText) {
-    const lines = csvText.trim().split("\n");
+    const lines = csvText.trim().split('\n');
 
     if (lines.length === 0) return [];
 
@@ -164,10 +157,10 @@
     for (let i = 1; i < lines.length; i++) {
       const values = parseCSVLine(lines[i]);
 
-      if (values.some((value) => value.trim() !== "")) {
+      if (values.some((value) => value.trim() !== '')) {
         const row = {};
         headers.forEach((header, index) => {
-          row[header] = values[index] || "";
+          row[header] = values[index] || '';
         });
         data.push(row);
       }
@@ -178,7 +171,7 @@
 
   function parseCSVLine(line) {
     const result = [];
-    let current = "";
+    let current = '';
     let inQuotes = false;
 
     for (let i = 0; i < line.length; i++) {
@@ -191,9 +184,9 @@
         } else {
           inQuotes = !inQuotes;
         }
-      } else if (char === "," && !inQuotes) {
+      } else if (char === ',' && !inQuotes) {
         result.push(current.trim());
-        current = "";
+        current = '';
       } else {
         current += char;
       }
@@ -208,7 +201,7 @@
       const keys = Object.keys(row);
 
       const findKey = (regex, fallback) => {
-        const found = keys.find((k) => regex.test((k || "").trim()));
+        const found = keys.find((k) => regex.test((k || '').trim()));
         return found || fallback || null;
       };
 
@@ -219,7 +212,7 @@
       // Prefer explicit header; else use 3rd column if it doesn't look like an image URL
       let descKey = findKey(/^(описание|description)$/i, null);
       if (!descKey && keys[2]) {
-        const candidateValue = (row[keys[2]] || "").trim();
+        const candidateValue = (row[keys[2]] || '').trim();
         if (!isImageUrl(candidateValue)) descKey = keys[2];
       }
 
@@ -227,13 +220,13 @@
       const images = [];
       keys.forEach((k) => {
         if (k === yearKey || k === monthKey || k === descKey) return;
-        const val = (row[k] || "").trim();
+        const val = (row[k] || '').trim();
         if (isImageUrl(val)) images.push(val);
       });
 
-      const year = (row[yearKey] || "2025").toString();
-      const month = (row[monthKey] || "").toString();
-      const description = descKey ? (row[descKey] || "").toString().trim() : "";
+      const year = (row[yearKey] || '2025').toString();
+      const month = (row[monthKey] || '').toString();
+      const description = descKey ? (row[descKey] || '').toString().trim() : '';
 
       return {
         id: index,
@@ -241,13 +234,13 @@
         year: year,
         monthName: month,
         description: description,
-        mainImage: images[0] || "",
+        mainImage: images[0] || '',
         images: images,
       };
     });
   }
 
-  function renderHistoryList(data, containerId = "O_History") {
+  function renderHistoryList(data, containerId = 'O_History') {
     console.log(`???? Рендерим список истории для ${containerId}:`, data);
     const container = document.getElementById(containerId);
 
@@ -274,7 +267,7 @@
       </div>
     `
       )
-      .join("");
+      .join('');
 
     const historyHTML = `
       <div class="W_RowHistoryTitleButton U_Padding">
@@ -297,7 +290,7 @@
     console.log(`✅ HTML успешно установлен для ${containerId}`);
   }
 
-  function renderHistoryDetails(data, containerId = "O_HistoryInside") {
+  function renderHistoryDetails(data, containerId = 'O_HistoryInside') {
     const container = document.getElementById(containerId);
 
     if (!container) {
@@ -307,17 +300,8 @@
 
     const historyDetailsItems = data
       .map((item, index) => {
-        const imagesHTML = item.images
-          .map(
-            (img) =>
-              `<img src="${img}" alt="" style="flex-shrink: 0; width: 100%;">`
-          )
-          .join("");
-        const descriptionHTML = item.description
-          ? `<p class="A_HistoryDescriptionText">${escapeHTML(
-              item.description
-            ).replace(/\n/g, "<br>")}</p>`
-          : "";
+        const imagesHTML = item.images.map((img) => `<img src="${img}" alt="" style="flex-shrink: 0; width: 100%;">`).join('');
+        const descriptionHTML = item.description ? `<p class="A_HistoryDescriptionText">${escapeHTML(item.description).replace(/\n/g, '<br>')}</p>` : '';
 
         return `
         <div class="M_HistoryInsideItem" id="${item.id}">
@@ -349,7 +333,7 @@
         </div>
       `;
       })
-      .join("");
+      .join('');
 
     container.innerHTML = historyDetailsItems;
   }
@@ -365,7 +349,7 @@
   //     }
   //   }
 
-  function showHistoryError(containerId, message = "Ошибка загрузки истории") {
+  function showHistoryError(containerId, message = 'Ошибка загрузки истории') {
     const container = document.getElementById(containerId);
     if (container) {
       container.innerHTML = `
@@ -379,9 +363,9 @@
   // Навигация по истории строительства
   function initHistoryNavigation() {
     // Desktop навигация по истории
-    const historyRow = document.querySelector(".W_RowHistory");
-    const leftArrow = document.querySelector(".U_LeftHistory");
-    const rightArrow = document.querySelector(".U_RightHistory");
+    const historyRow = document.querySelector('.W_RowHistory');
+    const leftArrow = document.querySelector('.U_LeftHistory');
+    const rightArrow = document.querySelector('.U_RightHistory');
 
     if (historyRow && leftArrow && rightArrow) {
       let currentPosition = 0;
@@ -407,7 +391,7 @@
         return -(totalWidth - containerWidth);
       }
 
-      leftArrow.addEventListener("click", function () {
+      leftArrow.addEventListener('click', function () {
         const itemWidth = getItemWidth();
         const newPosition = currentPosition + itemWidth;
 
@@ -415,19 +399,15 @@
         if (newPosition <= 0) {
           currentPosition = newPosition;
           historyRow.style.transform = `translateX(${currentPosition}px)`;
-          console.log(
-            `⬅️ История: сдвиг влево на ${itemWidth}px, позиция: ${currentPosition}px`
-          );
+          console.log(`⬅️ История: сдвиг влево на ${itemWidth}px, позиция: ${currentPosition}px`);
         } else {
           currentPosition = 0;
           historyRow.style.transform = `translateX(${currentPosition}px)`;
-          console.log(
-            `⬅️ История: возврат в начало, позиция: ${currentPosition}px`
-          );
+          console.log(`⬅️ История: возврат в начало, позиция: ${currentPosition}px`);
         }
       });
 
-      rightArrow.addEventListener("click", function () {
+      rightArrow.addEventListener('click', function () {
         const itemWidth = getItemWidth();
         const maxScroll = getMaxScroll();
         const newPosition = currentPosition - itemWidth;
@@ -436,50 +416,43 @@
         if (newPosition >= maxScroll) {
           currentPosition = newPosition;
           historyRow.style.transform = `translateX(${currentPosition}px)`;
-          console.log(
-            `➡️ История: сдвиг вправо на ${itemWidth}px, позиция: ${currentPosition}px`
-          );
+          console.log(`➡️ История: сдвиг вправо на ${itemWidth}px, позиция: ${currentPosition}px`);
         } else {
           currentPosition = maxScroll;
           historyRow.style.transform = `translateX(${currentPosition}px)`;
-          console.log(
-            `➡️ История: максимальный сдвиг, позиция: ${currentPosition}px`
-          );
+          console.log(`➡️ История: максимальный сдвиг, позиция: ${currentPosition}px`);
         }
       });
     }
 
     // Клики по элементам истории для переключения детального вида
-    const historyItems = document.querySelectorAll(".M_HistoryItem");
-    const historyDetailsItems = document.querySelectorAll(
-      ".M_HistoryInsideItem"
-    );
+    const historyItems = document.querySelectorAll('.M_HistoryItem');
+    const historyDetailsItems = document.querySelectorAll('.M_HistoryInsideItem');
 
     historyItems.forEach((item, index) => {
-      item.addEventListener("click", function () {
+      item.addEventListener('click', function () {
         // Убираем активный класс со всех детальных элементов
         historyDetailsItems.forEach((detailItem) => {
-          detailItem.classList.remove("active");
+          detailItem.classList.remove('active');
         });
 
         // Добавляем активный класс к соответствующему детальному элементу
         if (historyDetailsItems[index]) {
-          historyDetailsItems[index].classList.add("active");
+          historyDetailsItems[index].classList.add('active');
         }
 
         // Добавляем активный класс к контейнеру O_HistoryInside
-        const historyInsideContainer =
-          document.querySelector(".O_HistoryInside");
+        const historyInsideContainer = document.querySelector('.O_HistoryInside');
         if (historyInsideContainer) {
-          historyInsideContainer.classList.add("active");
+          historyInsideContainer.classList.add('active');
         }
 
         // Анимация плюсика
-        const plusIcon = item.querySelector(".A_HistoryItemPlusIcon");
+        const plusIcon = item.querySelector('.A_HistoryItemPlusIcon');
         if (plusIcon) {
-          plusIcon.style.transform = "rotate(45deg)";
+          plusIcon.style.transform = 'rotate(45deg)';
           setTimeout(() => {
-            plusIcon.style.transform = "rotate(0deg)";
+            plusIcon.style.transform = 'rotate(0deg)';
           }, 300);
         }
       });
@@ -487,35 +460,31 @@
 
     // Hover эффекты для элементов истории
     historyItems.forEach((item) => {
-      item.addEventListener("mouseenter", (e) => {
-        const image = e.currentTarget.querySelector(".A_HistoryItemImage");
-        const plusWrapper = e.currentTarget.querySelector(
-          ".A_HistoryPlusWrapper"
-        );
+      item.addEventListener('mouseenter', (e) => {
+        const image = e.currentTarget.querySelector('.A_HistoryItemImage');
+        const plusWrapper = e.currentTarget.querySelector('.A_HistoryPlusWrapper');
 
         if (image) {
-          image.style.transform = "scale(1.05)";
-          image.style.transition = "transform 0.3s ease";
+          image.style.transform = 'scale(1.05)';
+          image.style.transition = 'transform 0.3s ease';
         }
 
         if (plusWrapper) {
-          plusWrapper.style.opacity = "1";
-          plusWrapper.style.transition = "opacity 0.3s ease";
+          plusWrapper.style.opacity = '1';
+          plusWrapper.style.transition = 'opacity 0.3s ease';
         }
       });
 
-      item.addEventListener("mouseleave", (e) => {
-        const image = e.currentTarget.querySelector(".A_HistoryItemImage");
-        const plusWrapper = e.currentTarget.querySelector(
-          ".A_HistoryPlusWrapper"
-        );
+      item.addEventListener('mouseleave', (e) => {
+        const image = e.currentTarget.querySelector('.A_HistoryItemImage');
+        const plusWrapper = e.currentTarget.querySelector('.A_HistoryPlusWrapper');
 
         if (image) {
-          image.style.transform = "scale(1)";
+          image.style.transform = 'scale(1)';
         }
 
         if (plusWrapper) {
-          plusWrapper.style.opacity = "0.7";
+          plusWrapper.style.opacity = '0.7';
         }
       });
     });
@@ -526,19 +495,17 @@
 
   // Инициализация слайдеров для детального вида истории
   function initHistorySliders() {
-    const historyDetailsItems = document.querySelectorAll(
-      ".M_HistoryInsideItem"
-    );
+    const historyDetailsItems = document.querySelectorAll('.M_HistoryInsideItem');
 
     historyDetailsItems.forEach((item, itemIndex) => {
-      const slider = item.querySelector(".M_HistoryInsideItemSliderImages");
-      const leftBtn = item.querySelector(".U_LeftHistoryInsideItem");
-      const rightBtn = item.querySelector(".U_RightHistoryInsideItem");
-      const closeBtn = item.querySelector(".A_CloseButton");
+      const slider = item.querySelector('.M_HistoryInsideItemSliderImages');
+      const leftBtn = item.querySelector('.U_LeftHistoryInsideItem');
+      const rightBtn = item.querySelector('.U_RightHistoryInsideItem');
+      const closeBtn = item.querySelector('.A_CloseButton');
 
       if (slider && leftBtn && rightBtn) {
         let currentSlide = 0;
-        const images = slider.querySelectorAll("img");
+        const images = slider.querySelectorAll('img');
         const totalImages = images.length;
 
         // Обновление позиции слайдера
@@ -549,7 +516,7 @@
         }
 
         // Навигация влево
-        leftBtn.addEventListener("click", () => {
+        leftBtn.addEventListener('click', () => {
           if (currentSlide > 0) {
             currentSlide--;
             updateSliderPosition();
@@ -557,7 +524,7 @@
         });
 
         // Навигация вправо
-        rightBtn.addEventListener("click", () => {
+        rightBtn.addEventListener('click', () => {
           if (currentSlide < totalImages - 1) {
             currentSlide++;
             updateSliderPosition();
@@ -566,15 +533,14 @@
 
         // Кнопка закрытия
         if (closeBtn) {
-          closeBtn.addEventListener("click", () => {
+          closeBtn.addEventListener('click', () => {
             // Убираем активный класс с элемента
-            item.classList.remove("active");
+            item.classList.remove('active');
 
             // Убираем активный класс с контейнера O_HistoryInside
-            const historyInsideContainer =
-              document.querySelector(".O_HistoryInside");
+            const historyInsideContainer = document.querySelector('.O_HistoryInside');
             if (historyInsideContainer) {
-              historyInsideContainer.classList.remove("active");
+              historyInsideContainer.classList.remove('active');
             }
           });
         }
@@ -586,12 +552,12 @@
         let startX = 0;
         let startY = 0;
 
-        slider.addEventListener("touchstart", (e) => {
+        slider.addEventListener('touchstart', (e) => {
           startX = e.touches[0].clientX;
           startY = e.touches[0].clientY;
         });
 
-        slider.addEventListener("touchend", (e) => {
+        slider.addEventListener('touchend', (e) => {
           const endX = e.changedTouches[0].clientX;
           const endY = e.changedTouches[0].clientY;
           const diffX = endX - startX;
@@ -599,10 +565,7 @@
           const threshold = 50;
 
           // Проверяем, что это горизонтальный свайп
-          if (
-            Math.abs(diffX) > Math.abs(diffY) &&
-            Math.abs(diffX) > threshold
-          ) {
+          if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
             if (diffX > 0 && currentSlide > 0) {
               // Свайп вправо - предыдущий слайд
               currentSlide--;
@@ -620,7 +583,7 @@
 
   // Основная функция инициализации истории
   async function initHistory() {
-    console.log("???? Запуск инициализации истории...");
+    console.log('???? Запуск инициализации истории...');
     // showHistoryLoading('O_History');
     // showHistoryLoading('O_HistoryInside');
 
@@ -629,69 +592,54 @@
 
       // Если обычный fetch не сработал, пробуем JSONP
       if (rawData.length === 0) {
-        console.log("???? Обычный метод не сработал, пробуем JSONP...");
+        console.log('???? Обычный метод не сработал, пробуем JSONP...');
         rawData = await fetchHistoryDataViaJSONP();
       }
 
       // Если и JSONP не сработал, используем тестовые данные
       if (rawData.length === 0) {
-        console.log(
-          "???? Все методы не сработали, используем тестовые данные..."
-        );
+        console.log('???? Все методы не сработали, используем тестовые данные...');
         rawData = [
           {
-            Год: "2025",
-            Месяц: "Май",
-            "Первая картинка":
-              "https://optim.tildacdn.com/tild6166-3031-4332-a163-313535346139/-/format/webp/DJI_0532.jpg.webp",
-            "Вторая картинка":
-              "https://optim.tildacdn.com/tild3937-3538-4461-a537-353434353533/-/format/webp/DJI_0556.jpg.webp",
-            "Третья картинка":
-              "https://optim.tildacdn.com/tild3831-3139-4136-b764-386538316265/-/format/webp/DJI_0560.jpg.webp",
-            "Четвертая картинка":
-              "https://optim.tildacdn.com/tild6430-3265-4065-b236-386332376238/-/format/webp/DJI_0567.jpg.webp",
-            "Пятая картинка":
-              "https://optim.tildacdn.com/tild3666-6636-4434-b761-343737663139/-/format/webp/DJI_0578.jpg.webp",
+            Год: '2025',
+            Месяц: 'Май',
+            'Первая картинка': 'https://optim.tildacdn.com/tild6166-3031-4332-a163-313535346139/-/format/webp/DJI_0532.jpg.webp',
+            'Вторая картинка': 'https://optim.tildacdn.com/tild3937-3538-4461-a537-353434353533/-/format/webp/DJI_0556.jpg.webp',
+            'Третья картинка': 'https://optim.tildacdn.com/tild3831-3139-4136-b764-386538316265/-/format/webp/DJI_0560.jpg.webp',
+            'Четвертая картинка': 'https://optim.tildacdn.com/tild6430-3265-4065-b236-386332376238/-/format/webp/DJI_0567.jpg.webp',
+            'Пятая картинка': 'https://optim.tildacdn.com/tild3666-6636-4434-b761-343737663139/-/format/webp/DJI_0578.jpg.webp',
           },
           {
-            Год: "2025",
-            Месяц: "Апрель",
-            "Первая картинка":
-              "https://optim.tildacdn.com/tild6166-3031-4332-a163-313535346139/-/format/webp/DJI_0532.jpg.webp",
-            "Вторая картинка":
-              "https://optim.tildacdn.com/tild3937-3538-4461-a537-353434353533/-/format/webp/DJI_0556.jpg.webp",
-            "Третья картинка": "",
-            "Четвертая картинка": "",
-            "Пятая картинка": "",
+            Год: '2025',
+            Месяц: 'Апрель',
+            'Первая картинка': 'https://optim.tildacdn.com/tild6166-3031-4332-a163-313535346139/-/format/webp/DJI_0532.jpg.webp',
+            'Вторая картинка': 'https://optim.tildacdn.com/tild3937-3538-4461-a537-353434353533/-/format/webp/DJI_0556.jpg.webp',
+            'Третья картинка': '',
+            'Четвертая картинка': '',
+            'Пятая картинка': '',
           },
         ];
       }
 
       if (rawData.length === 0) {
-        throw new Error("Нет данных истории для отображения");
+        throw new Error('Нет данных истории для отображения');
       }
 
-      console.log("✅ Получены данные истории:", rawData);
+      console.log('✅ Получены данные истории:', rawData);
       historyData = formatHistoryData(rawData);
-      console.log("✅ Отформатированные данные истории:", historyData);
+      console.log('✅ Отформатированные данные истории:', historyData);
 
-      renderHistoryList(historyData, "O_History");
-      renderHistoryDetails(historyData, "O_HistoryInside");
+      renderHistoryList(historyData, 'O_History');
+      renderHistoryDetails(historyData, 'O_HistoryInside');
 
       // Инициализируем навигацию после рендера
       setTimeout(() => {
         initHistoryNavigation();
       }, 100);
     } catch (error) {
-      console.error("❌ Ошибка инициализации истории:", error);
-      showHistoryError(
-        "O_History",
-        `Ошибка загрузки истории: ${error.message}`
-      );
-      showHistoryError(
-        "O_HistoryInside",
-        `Ошибка загрузки истории: ${error.message}`
-      );
+      console.error('❌ Ошибка инициализации истории:', error);
+      showHistoryError('O_History', `Ошибка загрузки истории: ${error.message}`);
+      showHistoryError('O_HistoryInside', `Ошибка загрузки истории: ${error.message}`);
     }
   }
 
@@ -700,12 +648,9 @@
   window.refreshHistory = initHistory;
 
   // Автоматическая инициализация при загрузке страницы
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener('DOMContentLoaded', () => {
     // Проверяем, есть ли контейнеры для истории на странице
-    if (
-      document.getElementById("O_History") ||
-      document.getElementById("O_HistoryInside")
-    ) {
+    if (document.getElementById('O_History') || document.getElementById('O_HistoryInside')) {
       initHistory();
     }
   });

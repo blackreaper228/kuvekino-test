@@ -610,11 +610,11 @@
   width: fit-content;
 }
 .Q_3dPlanImage {
-  background-image: url("https://optim.tildacdn.com/tild6133-3132-4062-a165-366364313137/-/format/webp/Kuvekino_bird_ru_010.jpg.webp");
+  background-image: url('https://optim.tildacdn.com/tild6133-3132-4062-a165-366364313137/-/format/webp/Kuvekino_bird_ru_010.jpg.webp');
 }
 @media all and (max-width: 500px) {
   .Q_3dPlanImage {
-    background-image: url("https://optim.tildacdn.com/tild6538-6438-4765-b734-656436633663/-/format/webp/kuvekino_mobile.jpg.webp");
+    background-image: url('https://optim.tildacdn.com/tild6538-6438-4765-b734-656436633663/-/format/webp/kuvekino_mobile.jpg.webp');
   }
 }
 
@@ -864,7 +864,6 @@ th,
 td,
 video {
   margin: 0;
-  
 }
 .U_Invert {
   filter: invert(1);
@@ -1318,9 +1317,8 @@ video {
   }
 }
 
-
 @media (max-width: 1001px) {
-.M_SectionColumnRow.Arenda.U_TextBlock {
+  .M_SectionColumnRow.Arenda.U_TextBlock {
     /* padding: 24px 0px; */
   }
 }
