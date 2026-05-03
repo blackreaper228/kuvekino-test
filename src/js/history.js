@@ -6,6 +6,36 @@
 (function () {
   'use strict';
 
+  let historyModalScrollLockY = 0;
+  let historyModalScrollLocked = false;
+
+  function lockHistoryModalBodyScroll() {
+    if (historyModalScrollLocked) return;
+    historyModalScrollLocked = true;
+    historyModalScrollLockY = window.scrollY || document.documentElement.scrollTop || 0;
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${historyModalScrollLockY}px`;
+    document.body.style.width = '100%';
+  }
+
+  function unlockHistoryModalBodyScroll() {
+    if (!historyModalScrollLocked) return;
+    historyModalScrollLocked = false;
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, historyModalScrollLockY);
+  }
+
+  window.__kuvekinoHistoryModalScroll = {
+    lock: lockHistoryModalBodyScroll,
+    unlock: unlockHistoryModalBodyScroll,
+  };
+
   const SHEET_ID = '1CSeA_83ijKQOHEIa1b3w_3T0_llMXneEY4QzymspwsE';
 
   // URL для листа "History" - используем правильный gid=151892420
@@ -447,6 +477,8 @@
           historyInsideContainer.classList.add('active');
         }
 
+        lockHistoryModalBodyScroll();
+
         // Анимация плюсика
         const plusIcon = item.querySelector('.A_HistoryItemPlusIcon');
         if (plusIcon) {
@@ -488,6 +520,18 @@
         }
       });
     });
+
+    const historyInsideOverlay = document.querySelector('.O_HistoryInside');
+    if (historyInsideOverlay) {
+      historyInsideOverlay.addEventListener('click', function (event) {
+        if (event.target !== historyInsideOverlay) return;
+        document.querySelectorAll('.M_HistoryInsideItem').forEach((detailItem) => {
+          detailItem.classList.remove('active');
+        });
+        historyInsideOverlay.classList.remove('active');
+        unlockHistoryModalBodyScroll();
+      });
+    }
 
     // Инициализация слайдеров внутри детального вида
     initHistorySliders();
@@ -542,6 +586,7 @@
             if (historyInsideContainer) {
               historyInsideContainer.classList.remove('active');
             }
+            unlockHistoryModalBodyScroll();
           });
         }
 

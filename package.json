@@ -19,6 +19,7 @@
     "postcss": "^8.5.12",
     "prettier": "^3.8.2",
     "tailwindcss": "^4.2.4",
-    "vite": "^8.0.10"
+    "vite": "^8.0.10",
+    "vite-plugin-simple-html": "^1.1.0"
   }
 }

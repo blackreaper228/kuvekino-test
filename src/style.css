@@ -187,7 +187,17 @@
     border: 1px solid #131313;
   }
 }
-.O_HistoryInside {
+html:has(.O_HistoryInside.active),
+html:has(.O_HistoryInsideG.active) {
+  overflow: hidden;
+}
+html:has(.O_HistoryInside.active) body,
+html:has(.O_HistoryInsideG.active) body {
+  overflow: hidden;
+}
+
+.O_HistoryInside,
+.O_HistoryInsideG {
   top: 0;
   left: 0;
   position: fixed;
@@ -202,11 +212,13 @@
   background: #0000;
   z-index: 9999099999;
 }
-.O_HistoryInside:is(.active) {
+.O_HistoryInside:is(.active),
+.O_HistoryInsideG:is(.active) {
   background: #0000004d;
   pointer-events: all;
 }
-.M_HistoryInsideItem {
+.M_HistoryInsideItem,
+.M_HistoryInsideItemG {
   position: absolute;
   left: 100vw;
   top: 0;
@@ -222,22 +234,29 @@
   justify-content: space-between;
   padding: 40px;
   height: 100vh;
+  max-height: 100dvh;
   max-width: 715px;
   width: 715px;
   background-color: #fff;
   -webkit-transition: all 1s cubic-bezier(0.77, 0, 0.175, 1);
   transition: all 1s cubic-bezier(0.77, 0, 0.175, 1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
-.M_HistoryInsideItem:is(.active) {
+.M_HistoryInsideItem:is(.active),
+.M_HistoryInsideItemG:is(.active) {
   left: calc(100vw - 715px);
 }
 @media all and (max-width: 1024px) {
-  .M_HistoryInsideItem {
+  .M_HistoryInsideItem,
+  .M_HistoryInsideItemG {
     width: 100vw;
     max-width: 100vw;
     padding: 24px;
   }
-  .M_HistoryInsideItem:is(.active) {
+  .M_HistoryInsideItem:is(.active),
+  .M_HistoryInsideItemG:is(.active) {
     left: 0;
   }
   .M_HistoryItem {
@@ -315,7 +334,8 @@
   margin: 0;
   padding: 0;
 }
-.M_HistoryInsideItemSlider {
+.M_HistoryInsideItemSlider,
+.M_HistoryInsideItemSliderG {
   width: 100%;
   max-width: 100%;
   aspect-ratio: 16/9;
@@ -402,7 +422,8 @@
   height: 60px;
   width: 29px;
 }
-.M_HistoryInsideItemSliderImages {
+.M_HistoryInsideItemSliderImages,
+.M_HistoryInsideItemSliderImagesG {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -417,7 +438,8 @@
   -webkit-transition: all 1s cubic-bezier(0.77, 0, 0.175, 1);
   transition: all 1s cubic-bezier(0.77, 0, 0.175, 1);
 }
-.M_HistoryInsideItemSliderImages img {
+.M_HistoryInsideItemSliderImages img,
+.M_HistoryInsideItemSliderImagesG img {
   width: 100%;
   height: 100%;
 }
@@ -766,8 +788,6 @@
   }
   .W_MobileNavigation {
     padding: 0 24px;
-  }
-  .U_BestOffer {
   }
   .W_Offers {
     display: flex;
@@ -1318,7 +1338,302 @@ video {
 }
 
 @media (max-width: 1001px) {
-  .M_SectionColumnRow.Arenda.U_TextBlock {
-    /* padding: 24px 0px; */
+  /* (empty block removed) */
+}
+
+/* наши проекты */
+
+.project {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  overflow: hidden;
+  cursor: pointer;
+
+  .text {
+    @apply text-white;
+  }
+
+  &:is(.kuvekino) {
+    background-color: var(--kuvekino-color);
+    background-image: url("https://optim.tildacdn.com/tild6663-3335-4437-b235-376639343334/-/resize/660x/-/format/webp/kuvekino.jpg.webp");
+    background-size: cover;
+    background-position: center;
+
+    .project_color {
+      background-color: var(--kuvekino-color);
+    }
+  }
+
+  &:is(.senkino) {
+    background-color: var(--senkino-color);
+    background-image: url(https://optim.tildacdn.com/tild3765-3966-4432-a165-613131316163/-/resize/660x/-/format/webp/senkino.jpg.webp);
+    background-size: cover;
+    background-position: center;
+
+    .project_color {
+      background-color: var(--senkino-color);
+    }
+  }
+
+  &:is(.balashiha) {
+    background-color: var(--balashiha-color);
+    background-image: url(https://optim.tildacdn.com/tild6536-3033-4263-a639-306438313765/-/resize/660x/-/format/webp/balashiha.jpg.webp);
+    background-size: cover;
+    background-position: center;
+
+    .project_color {
+      background-color: var(--balashiha-color);
+    }
+  }
+
+  &:is(.sokolovo) {
+    background-color: var(--sokolovo-color);
+  background-image: url(https://optim.tildacdn.com/tild6638-3536-4566-b930-313465643233/-/resize/660x/-/format/webp/sokolovo.jpg.webp);
+    background-size: cover;
+    background-position: center;
+
+    .project_color {
+      background-color: var(--sokolovo-color);
+    }
+  }
+
+  &:is(.tokarevo) {
+    background-color: var(--tokarevo-color);
+    background-image: url(https://optim.tildacdn.com/tild6633-3830-4631-b062-653561363634/-/resize/660x/-/format/webp/tokarevo.jpg.webp);
+    background-size: cover;
+    background-position: center;
+
+    .project_color {
+      background-color: var(--tokarevo-color);
+    }
+  }
+
+  &:is(.butovo) {
+    background-color: var(--butovo-color);
+    background-image: url(https://optim.tildacdn.com/tild6633-6133-4934-b362-376264343162/-/resize/660x/-/format/webp/butovo.jpg.webp);
+    background-size: cover;
+    background-position: center;
+
+    .project_color {
+      background-color: var(--butovo-color);
+    }
+  }
+}
+
+.project_color {
+  transition: background-color 0.3s;
+}
+
+@media (max-width:768px) {
+  .project.kuvekino {
+    background-image: url(https://optim.tildacdn.com/tild6264-3739-4832-b832-386262616436/-/resize/621x/-/format/webp/kuvekino_mobile.jpg.webp)
+  }
+
+  .project.senkino {
+    background-image: url(https://optim.tildacdn.com/tild6162-3931-4539-a333-313766633963/-/resize/621x/-/format/webp/senkino_mobile.jpg.webp)
+  }
+
+  .project.balashiha {
+    background-image: url(https://optim.tildacdn.com/tild3639-6137-4635-a135-363865616135/-/resize/621x/-/format/webp/balashiha_mobile.jpg.webp)
+  }
+
+  .project.sokolovo {
+    background-image: url(https://optim.tildacdn.com/tild3533-3464-4337-a331-373739303237/-/resize/621x/-/format/webp/sokolovo_mobile.jpg.webp)
+  }
+
+  .project.tokarevo {
+    background-image: url(https://optim.tildacdn.com/tild3665-6634-4064-b437-353365376330/-/resize/621x/-/format/webp/tokarevo_mobile.jpg.webp)
+  }
+
+  .project.butovo {
+    background-image: url(https://optim.tildacdn.com/tild3461-3835-4136-b365-663263643333/-/resize/621x/-/format/webp/butovo_mobile.jpg.webp)
+  }
+}
+
+
+/* .project:hover { */
+
+.project {
+  p.data {
+    /* display: none; */
+    opacity: 0;
+  }
+
+  .content {
+    position: absolute;
+  }
+}
+
+.project:hover {
+  .growing {
+    position: relative;
+    height: 382px;
+    transition: 0.3s ease-in-out;
+    opacity: 1;
+  }
+
+  .growing.kuvekino {
+    background-color: var(--kuvekino-color);
+  }
+
+  .growing.balashiha {
+    background-color: var(--balashiha-color);
+  }
+
+  .growing.senkino {
+    background-color: var(--senkino-color);
+  }
+
+  .growing.sokolovo {
+    background-color: var(--sokolovo-color);
+  }
+
+  .growing.tokarevo {
+    background-color: var(--tokarevo-color);
+  }
+
+  .growing.butovo {
+    background-color: var(--butovo-color);
+  }
+
+  .plus {
+    background-color: white;
+    transition: background-color 0.3s;
+  }
+
+  p.data {
+    display: flex;
+    animation: goingUp 0.5s forwards;
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+    animation-delay: 0.1s;
+
+    &:nth-child(1) {
+      animation-delay: 0.15s;
+    }
+
+    &:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.05s;
+    }
+  }
+
+  .content {
+    transition: 0.3s;
+    /* animation: goingUp 0.3s ease-in-out forwards;
+    animation-delay: 0.2s; */
+  }
+}
+
+@keyframes goingUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.tag {
+  width: fit-content;
+  height: 40px;
+  border-radius: 1000px;
+
+  border: 1px solid white;
+
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.tagWrap {
+  max-width: 300px;
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+
+.growing {
+  height: 100px;
+  transition: all .3s ease-in-out;
+}
+
+@media (min-width:768px) {
+  .project:hover .growing {
+    opacity: 1;
+    height: 382px;
+    transition: all .3s ease-in-out;
+    position: relative
+  }
+
+  .project:hover .plus img:first-child,
+  .project:hover .plus img:nth-child(2) {
+    transition: transform .3s ease-in-out;
+    transform: translateY(-100%)
+  }
+
+  .project:hover .growing.kuvekino {
+    background-color: var(--kuvekino-color)
+  }
+
+  .project:hover .growing.balashiha {
+    background-color: var(--balashiha-color)
+  }
+
+  .project:hover .growing.senkino {
+    background-color: var(--senkino-color)
+  }
+
+  .project:hover .growing.sokolovo {
+    background-color: var(--sokolovo-color)
+  }
+
+  .project:hover .growing.tokarevo {
+    background-color: var(--tokarevo-color)
+  }
+
+  .project:hover .growing.butovo {
+    background-color: var(--butovo-color)
+  }
+
+  .project:hover .plus {
+    background-color: #fff;
+    transition: background-color .3s
+  }
+
+  .project:hover p.data {
+    animation: .5s ease-in-out .1s forwards goingUp;
+    display: flex
+  }
+
+  .project:hover p.data:first-child {
+    animation-delay: .15s
+  }
+
+  .project:hover p.data:nth-child(2) {
+    animation-delay: .1s
+  }
+
+  .project:hover p.data:nth-child(3) {
+    animation-delay: 50ms
+  }
+
+  .project:hover .content {
+    pointer-events: auto;
+    transition: all .3s
   }
 }

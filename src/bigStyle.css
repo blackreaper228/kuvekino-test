@@ -1005,6 +1005,11 @@ a {
   position: relative;
   transition: all 1s cubic-bezier(0.77, 0, 0.175, 1);
 }
+.U_CardsTrack {
+  max-width: none;
+  position: relative;
+  transition: all 1s cubic-bezier(0.77, 0, 0.175, 1);
+}
 .Q_FirstImage {
   min-width: 67%;
   max-width: 67%;
@@ -1406,8 +1411,6 @@ a {
   }
   .U_BurgerMenuListOpen {
     left: 0vw;
-  }
-  .W_WithoutSmallTitle {
   }
   .A_PageTitle {
     padding: 0;
