@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>kuvekino-test</title>
   </head>
+  
   <body>
     <!--код шапки-->
     <header class="_header_1a0or_2">
@@ -3282,67 +3283,9 @@
     <!-- smart-captcha -->
     <script type="text/javascript" src="https://smartcaptcha.yandexcloud.net/captcha.js?render=onload&onload=initSmartCaptcha"></script>
 
-    <!-- скрипт для карты -->
-    <script>
-      // init maps
-      {
-        const iconSize = [54, 64];
-        const iconOffset = [0, -65];
-
-        const initMaps = () => {
-          const maps = document.querySelectorAll('.js-map');
-
-          Array.from(maps).forEach((map) => {
-            const myMap = new ymaps.Map(
-              map,
-              {
-                center: [55.494671, 37.423214],
-                zoom: 11,
-                controls: [],
-              },
-              {
-                suppressMapOpenBlock: true,
-              },
-              {
-                searchControlProvider: 'yandex#search',
-              }
-            );
-
-            myMap.geoObjects.add(
-              new ymaps.Placemark(
-                // [55.494288, 37.420644],
-                [55.494671, 37.423214],
-                {
-                  hintContent: '',
-                  balloonContent: '',
-                },
-                {
-                  iconLayout: 'default#image',
-                  iconImageHref: 'https://i.ibb.co/1tZc4NMG/image.png',
-                  //   iconImageHref: 'https://optim.tildacdn.com/tild3038-6536-4530-a130-313166313339/-/format/webp/senkino.png.webp',
-                  iconImageSize: iconSize,
-                  iconImageOffset: iconOffset,
-                }
-              )
-            );
-
-            myMap.controls.add('zoomControl', {
-              position: {
-                right: 15,
-                top: 5,
-              },
-            });
-
-            myMap.behaviors.disable('scrollZoom');
-          });
-        };
-
-        if (document.querySelector('.js-map')) {
-          ymaps.ready(initMaps);
-        }
-      }
-    </script>
-
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=2ed514ec-bf25-455d-a300-0a2f1a4efb26"
+      type="text/javascript"></script>
     <script type="module" src="/src/main.js"></script>
+
   </body>
 </html>

@@ -4,6 +4,8 @@ import './js/table.js';
 import './js/history.js';
 import './js/accordion.js';
 import './js/cards.js';
+import './js/map.js';
+
 
 //вывод текущего года в футере
 
