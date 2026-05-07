@@ -1581,24 +1581,33 @@ video {
   flex-wrap: wrap;
 }
 
-/* Our Projects: Swiper mobile mode (match `arenda`) */
+/* Our Projects: Swiper mode (all breakpoints) */
+#OurProjects .swiper {
+  width: 100%;
+}
+
+/* Override legacy absolute + fit-content track so Swiper can control layout */
+#OurProjects [data-track].swiper-wrapper {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* On mobile we want exactly 1 card per screen */
 @media (max-width: 1023px) {
-  #OurProjects .swiper {
-    width: 100%;
-  }
-
-  #OurProjects [data-track].swiper-wrapper {
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
-    min-width: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
   #OurProjects .swiper-slide {
     width: 100vw !important;
     max-width: 100vw !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  #OurProjects .swiper-slide {
+    width: 440px !important;
+    max-width: 440px !important;
   }
 }
 

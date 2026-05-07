@@ -91,9 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // On mobile, slider behavior is handled by Swiper (CDN) to match `arenda`.
-    // We only keep tap-to-open here.
-    if (hasProjects && window.innerWidth < 1024) return;
+    // Our Projects carousel: Swiper handles the slider on all breakpoints.
+    // Keep only tap-to-open here; do NOT run legacy translate/clone logic.
+    if (hasProjects) return;
 
     // Hover for existing cards
     if (!hoverDisabled) {

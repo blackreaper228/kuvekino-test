@@ -1,9 +1,3 @@
-const MOBILE_MAX_WIDTH = 1023;
-
-function isMobile() {
-  return window.innerWidth <= MOBILE_MAX_WIDTH;
-}
-
 function getSwiper() {
   return window.Swiper;
 }
@@ -44,7 +38,6 @@ function pickVisibleNav(sliderRoot) {
 }
 
 function initOne(sliderRoot) {
-  if (!isMobile()) return null;
   if (sliderRoot.getAttribute('data-mobile-carousel') !== 'true') return null;
   if ((sliderRoot.getAttribute('data-mode') || '').toLowerCase() !== 'translate') return null;
 
@@ -56,16 +49,10 @@ function initOne(sliderRoot) {
 
   const { container } = structure;
   const { prevEl, nextEl } = pickVisibleNav(sliderRoot);
-  const loop = sliderRoot.getAttribute('data-infinite') === 'true';
   const currentEls = Array.from(sliderRoot.querySelectorAll('[data-counter] [data-current]'));
   const totalEls = Array.from(sliderRoot.querySelectorAll('[data-counter] [data-total]'));
   const slidesCount = Array.from(sliderRoot.querySelectorAll('[data-track] [data-slide]')).length;
   totalEls.forEach((el) => (el.textContent = String(slidesCount || 0)));
-
-  // Swiper warns when loop is enabled but there aren't enough slides.
-  // With `slidesPerView: 'auto'` exact threshold depends on viewport (how many slides fit).
-  // Use a conservative threshold to avoid noisy warnings.
-  const loopEnabled = loop && slidesCount >= 5;
 
   // Prevent double init.
   if (container.__swiperInstance) return container.__swiperInstance;
@@ -73,12 +60,17 @@ function initOne(sliderRoot) {
   const instance = new Swiper(container, {
     slidesPerView: 'auto',
     spaceBetween: 0,
-    loop: loopEnabled,
-    speed: 200,
-    resistanceRatio: 0.15,
+    loop: false,
+    speed: 380,
+    resistanceRatio: 0.85,
     followFinger: true,
     threshold: 5,
-    grabCursor: false,
+    grabCursor: true,
+    simulateTouch: true,
+    breakpoints: {
+      0: { spaceBetween: 0 },
+      1024: { spaceBetween: 2 },
+    },
     preventInteractionOnTransition: false,
     navigation: prevEl && nextEl ? { prevEl, nextEl } : undefined,
     on: {
@@ -116,11 +108,6 @@ function refreshOnResize() {
     const track = r.querySelector('[data-track]');
     const container = track?.parentElement;
     const inst = container?.__swiperInstance;
-
-    if (!isMobile()) {
-      if (inst) destroyOne(r);
-      return;
-    }
     if (!inst) initOne(r);
     else if (typeof inst.update === 'function') inst.update();
   });
