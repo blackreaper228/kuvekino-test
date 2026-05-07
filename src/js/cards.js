@@ -60,7 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!prev || !next) return;
 
     const hoverDisabled = root.getAttribute('data-disable-hover') === 'true';
-    if (hoverDisabled) {
+    // Do not freeze class changes inside Swiper-based carousels.
+    // Swiper adds/removes classes like `swiper-wrapper` dynamically.
+    if (hoverDisabled && !root.hasAttribute('data-slider')) {
       freezeClassNames(root);
     }
 
@@ -99,6 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!hoverDisabled) {
       initialCards.forEach((card) => card.classList.contains('U_DesktopCard') && bindHover(card));
     }
+
+    // Other carousels that are migrated to Swiper should skip legacy translate/clone logic.
+    if (root.hasAttribute('data-slider')) return;
 
     let currentPosition = 0;
     let swipeIndex = 0;

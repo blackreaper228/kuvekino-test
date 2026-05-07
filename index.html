@@ -1932,20 +1932,27 @@
     </div>
 
     <!-- преимущества парка -->
-    <div class="flex flex-col max-w-[100vw] w-full U_MobileHideCards U_Padding" data-cards-carousel>
+    <div
+      class="flex flex-col max-w-[100vw] w-full U_MobileHideCards U_Padding overflow-x-hidden"
+      data-cards-carousel
+      data-slider
+      data-mobile-carousel="true"
+      data-mode="translate"
+      data-infinite="false"
+    >
       <div class="W_Row U_Padding U_Horizontal U_NavSlider pt-[80px] pb-[40px]">
         <h2 class="A_SectionTitle">Преимущества парка Кувекино</h2>
         <div class="W_Row U_Gap5 U_Center">
-          <div class="A_Arrow U_Left" data-cards-prev>
+          <div class="A_Arrow U_Left" data-cards-prev data-prev>
             <img class="Q_ImageIcon" src="https://optim.tildacdn.com/tild6266-6439-4136-b839-316239636237/-/resize/700x/-/format/webp/arrow-Left.png" alt="" />
           </div>
-          <div class="A_Arrow U_RightNew" data-cards-next>
+          <div class="A_Arrow U_RightNew" data-cards-next data-next>
             <img class="Q_ImageIcon" src="https://optim.tildacdn.com/tild3638-3031-4436-b861-373431666664/-/resize/700x/-/format/webp/arrow-Right.png" alt="" />
           </div>
         </div>
       </div>
-      <div class="W_Row U_Gap2 U_CardsTrack" id="U_Cards" data-cards-track>
-        <div class="M_Card U_DesktopCard U_Parking">
+      <div class="W_Row U_CardsTrack" id="U_Cards" data-cards-track data-track>
+        <div class="M_Card U_DesktopCard U_Parking" data-slide>
           <div class="U_HoverAnimation">
             <div class="U_CardRow">
               <div class="A_BodyText U_Uppercase U_White">16 км от МКАД</div>
@@ -1956,7 +1963,7 @@
             <div class="A_TextInCard">Комфортный подъезд по Калужскому шоссе, 16 км от МКАД, г.Троицк</div>
           </div>
         </div>
-        <div class="M_Card U_DesktopCard U_Entrence">
+        <div class="M_Card U_DesktopCard U_Entrence" data-slide>
           <div class="U_HoverAnimation">
             <div class="U_CardRow">
               <div class="A_BodyText U_Uppercase U_White">Доступность общественным транспортом</div>
@@ -1967,7 +1974,7 @@
             <div class="A_TextInCard">Рядом с парком расположена автобусная остановка до г.Троицк</div>
           </div>
         </div>
-        <div class="M_Card U_DesktopCard U_Architecture">
+        <div class="M_Card U_DesktopCard U_Architecture" data-slide>
           <div class="U_HoverAnimation">
             <div class="U_CardRow">
               <div class="A_BodyText U_Uppercase U_White">Парковка включена в стоимость</div>
@@ -1978,7 +1985,7 @@
             <div class="A_TextInCard">Оптимальное количество парковочных мест для грузового и легкового транспорта</div>
           </div>
         </div>
-        <div class="M_Card U_DesktopCard U_Mesonin">
+        <div class="M_Card U_DesktopCard U_Mesonin" data-slide>
           <div class="U_HoverAnimation">
             <div class="U_CardRow">
               <div class="A_BodyText U_Uppercase U_White">Возможность увеличить электрическую мощность</div>
@@ -1989,7 +1996,7 @@
             <div class="A_TextInCard">Увеличенные электрические мощности для производственных компаний</div>
           </div>
         </div>
-        <div class="M_Card U_DesktopCard U_Warming">
+        <div class="M_Card U_DesktopCard U_Warming" data-slide>
           <div class="U_HoverAnimation">
             <div class="U_CardRow">
               <div class="A_BodyText U_Uppercase U_White">Два типа зон погрузки и разгрузки</div>
@@ -2003,7 +2010,7 @@
             </div>
           </div>
         </div>
-        <div class="M_Card U_DesktopCard U_Docs">
+        <div class="M_Card U_DesktopCard U_Docs" data-slide>
           <div class="U_HoverAnimation">
             <div class="U_CardRow">
               <div class="A_BodyText U_Uppercase U_White">Современная архитектура</div>
@@ -2014,7 +2021,7 @@
             <div class="A_TextInCard">Функциональные планировки помещений, возможность зонирования пространства</div>
           </div>
         </div>
-        <div class="M_Card U_DesktopCard U_Powers">
+        <div class="M_Card U_DesktopCard U_Powers" data-slide>
           <div class="U_HoverAnimation">
             <div class="U_CardRow">
               <div class="A_BodyText U_Uppercase U_White">Отопление и вентиляция</div>
@@ -3345,6 +3352,7 @@
 
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=2ed514ec-bf25-455d-a300-0a2f1a4efb26"
       type="text/javascript"></script>
+      
     <script type="module" src="/src/main.js"></script>
 
   </body>
