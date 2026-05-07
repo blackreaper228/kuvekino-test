@@ -4,6 +4,7 @@ import './js/table.js';
 import './js/history.js';
 import './js/accordion.js';
 import './js/cards.js';
+import './js/swiperMobileCarousels.js';
 import './js/map.js';
 
 

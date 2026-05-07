@@ -4,19 +4,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!all.length) return;
 
     const original = new Map();
-    all.forEach((el) => original.set(el, el.className));
+    all.forEach((el) => {
+      // Allow toggling classes on project cards (mobile tap-to-open).
+      if (el.classList?.contains('project')) return;
+      original.set(el, el.className);
+    });
 
     const observer = new MutationObserver((mutations) => {
       for (const m of mutations) {
         if (m.type !== 'attributes' || m.attributeName !== 'class') continue;
         const el = m.target;
+        if (el.classList?.contains('project')) continue;
         const saved = original.get(el);
         if (typeof saved !== 'string') continue;
         if (el.className !== saved) el.className = saved;
       }
     });
 
-    all.forEach((el) => observer.observe(el, { attributes: true, attributeFilter: ['class'] }));
+    all.forEach((el) => {
+      if (el.classList?.contains('project')) return;
+      observer.observe(el, { attributes: true, attributeFilter: ['class'] });
+    });
   }
 
   function getGapPx(track) {
@@ -59,6 +67,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const initialCards = Array.from(track.children).filter((el) => el.nodeType === 1);
     if (initialCards.length === 0) return;
 
+    const projectCards = initialCards.filter((el) => el.classList?.contains('project'));
+    const hasProjects = projectCards.length > 0;
+
+    // Mobile: tap toggles project expansion (2nd tap closes)
+    const isTapDevice = () => window.matchMedia?.('(hover: none)')?.matches || window.innerWidth < 1024;
+    if (projectCards.length) {
+      projectCards.forEach((card) => {
+        card.addEventListener('click', (e) => {
+          if (!isTapDevice()) return;
+          // Prevent accidental selection; allow links inside if added later.
+          const wasOpen = card.classList.contains('is-open');
+          projectCards.forEach((c) => c.classList.remove('is-open'));
+          if (!wasOpen) card.classList.add('is-open');
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!isTapDevice()) return;
+        const target = e.target;
+        if (target instanceof Element && target.closest('.project')) return;
+        projectCards.forEach((c) => c.classList.remove('is-open'));
+      });
+    }
+
+    // On mobile, slider behavior is handled by Swiper (CDN) to match `arenda`.
+    // We only keep tap-to-open here.
+    if (hasProjects && window.innerWidth < 1024) return;
+
     // Hover for existing cards
     if (!hoverDisabled) {
       initialCards.forEach((card) => card.classList.contains('U_DesktopCard') && bindHover(card));
@@ -83,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     prev.addEventListener('click', () => {
+      if (window.innerWidth < 1024 && hasProjects) return;
       const step = stepPx();
       if (!step) return;
       if (currentPosition < 0) {
@@ -92,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     next.addEventListener('click', () => {
+      if (window.innerWidth < 1024 && hasProjects) return;
       const step = stepPx();
       if (!step) return;
 

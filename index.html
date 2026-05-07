@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <title>kuvekino-test</title>
   </head>
   
@@ -1853,8 +1854,8 @@
     </div>
 
     <!-- преимущества парка, мобилка -->
-    <div class="O_Advantages U_MobileOnlyShow U_MobileCarouselGap">
-      <div class="W_Row U_Padding U_Horizontal">
+    <div class="block max-w-[100vw] w-full U_MobileOnlyShow">
+      <div class="W_Row U_Padding U_Horizontal pt-[48px] pb-[24px]">
         <h2 class="A_SectionTitle U_Uppercase U_MobilePaddings U_Black U_Padding U_Horizontal">Преимущества парка Кувекино</h2>
       </div>
       <div class="W_Row U_Gap2 U_MobileRow">
@@ -1931,8 +1932,8 @@
     </div>
 
     <!-- преимущества парка -->
-    <div class="O_Advantages U_MobileHideCards U_Padding U_Vertical" data-cards-carousel>
-      <div class="W_Row U_Padding U_Horizontal U_NavSlider">
+    <div class="flex flex-col max-w-[100vw] w-full U_MobileHideCards U_Padding" data-cards-carousel>
+      <div class="W_Row U_Padding U_Horizontal U_NavSlider pt-[80px] pb-[40px]">
         <h2 class="A_SectionTitle">Преимущества парка Кувекино</h2>
         <div class="W_Row U_Gap5 U_Center">
           <div class="A_Arrow U_Left" data-cards-prev>
@@ -2027,166 +2028,6 @@
       </div>
     </div>
 
-    <!-- наши проекты -->
-    <div class="O_Advantages U_Padding U_Vertical" data-cards-carousel data-disable-hover="true">
-      <div class="flex flex-row U_Padding U_NavSlider">
-        <h2 class="A_SectionTitle">Наши проекты</h2>
-        <div class="U_Gap5 U_Center flex">
-          <div class="A_Arrow U_Left" data-cards-prev>
-            <img class="Q_ImageIcon" src="https://optim.tildacdn.com/tild6266-6439-4136-b839-316239636237/-/resize/700x/-/format/webp/arrow-Left.png" alt="" />
-          </div>
-          <div class="A_Arrow U_RightNew" data-cards-next>
-            <img class="Q_ImageIcon" src="https://optim.tildacdn.com/tild3638-3031-4436-b861-373431666664/-/resize/700x/-/format/webp/arrow-Right.png" alt="" />
-          </div>
-        </div>
-      </div>
-
-      <div class="relative w-full overflow-hidden h-[580px] max-md:h-[380px]">
-        <div class="min-[1024]:flex U_Gap2 U_CardsTrack absolute left-0 top-0 min-w-fit w-fit max-w-fit flex flex-row gap-[2px]" data-cards-track>
-        <div class="project senkino w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[380px]">
-          <div class="tagWrap"> 
-            <p class="text tag">Лайт индастриал</p>
-          </div>
-          <div class="growing senkino flex items-end py-[32px] px-[40px] w-full h-[100px] bg-[var(--pikBlack)] ">
-            <div class="flex flex-col h-full justify-end">
-              <div class="content top-10 left-10 pr-10 flex flex-col">
-                <p class="data pt-5 pr-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">г. Москва, пос. Краснопахорское, квартал №61</p>
-                <p class="data pt-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">Близость к городу Троицк. <br>1-я линия ЦКАД</p>
-              </div>
-              <div class="flex gap-2 items-center">
-                <div class="plus project_color rounded-full h-[30px] w-[30px] overflow-hidden">
-                  <img class="h-[30px] w-[30px] invert" src="https://static.tildacdn.com/tild3761-3933-4162-b335-333139326538/IconPlus.svg" alt>
-                  <img class="h-[30px] w-[30px] invert" src="https://static.tildacdn.com/tild3030-3563-4261-b739-666466353663/IconMinus.svg" alt>
-                </div>
-                <p class="text-[var(--white)] text-[28px] pt-[4px] uppercase">Сенькино</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="project balashiha w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[380px]">
-          <div class="tagWrap">
-            <p class="text tag">Лайт индастриал</p>
-          </div>
-          <div class="growing balashiha flex items-end py-[32px] px-[40px] w-full h-[100px] bg-[var(--pikBlack)] ">
-            <div class="flex flex-col h-full justify-end">
-              <div class="content top-10 left-10 pr-10 flex flex-col">
-                <p class="data pt-5 pr-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">г. Москва, пос.
-                  Краснопахорское, квартал №61</p>
-                <p class="data pt-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">Близость к городу
-                  Троицк. <br>1-я линия ЦКАД</p>
-              </div>
-              <div class="flex gap-2 items-center">
-                <div class="plus project_color rounded-full h-[30px] w-[30px] overflow-hidden">
-                  <img class="h-[30px] w-[30px] invert"
-                    src="https://static.tildacdn.com/tild3761-3933-4162-b335-333139326538/IconPlus.svg" alt>
-                  <img class="h-[30px] w-[30px] invert"
-                    src="https://static.tildacdn.com/tild3030-3563-4261-b739-666466353663/IconMinus.svg" alt>
-                </div>
-                <p class="text-[var(--white)] text-[28px] pt-[4px] uppercase">Балашиха</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="project kuvekino w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[380px]">
-          <div class="tagWrap">
-            <p class="text tag">Лайт индастриал</p>
-          </div>
-          <div class="growing kuvekino flex items-end py-[32px] px-[40px] w-full h-[100px] bg-[var(--pikBlack)] ">
-            <div class="flex flex-col h-full justify-end">
-              <div class="content top-10 left-10 pr-10 flex flex-col">
-                <p class="data pt-5 pr-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">г. Москва, пос.
-                  Краснопахорское, квартал №61</p>
-                <p class="data pt-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">Близость к городу
-                  Троицк. <br>1-я линия ЦКАД</p>
-              </div>
-              <div class="flex gap-2 items-center">
-                <div class="plus project_color rounded-full h-[30px] w-[30px] overflow-hidden">
-                  <img class="h-[30px] w-[30px] invert"
-                    src="https://static.tildacdn.com/tild3761-3933-4162-b335-333139326538/IconPlus.svg" alt>
-                  <img class="h-[30px] w-[30px] invert"
-                    src="https://static.tildacdn.com/tild3030-3563-4261-b739-666466353663/IconMinus.svg" alt>
-                </div>
-                <p class="text-[var(--white)] text-[28px] pt-[4px] uppercase">Кувекино</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="project tokarevo w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[380px]">
-          <div class="tagWrap">
-            <p class="text tag">Лайт индастриал</p>
-          </div>
-          <div class="growing tokarevo flex items-end py-[32px] px-[40px] w-full h-[100px] bg-[var(--pikBlack)] ">
-            <div class="flex flex-col h-full justify-end">
-              <div class="content top-10 left-10 pr-10 flex flex-col">
-                <p class="data pt-5 pr-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">г. Москва, пос.
-                  Краснопахорское, квартал №61</p>
-                <p class="data pt-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">Близость к городу
-                  Троицк. <br>1-я линия ЦКАД</p>
-              </div>
-              <div class="flex gap-2 items-center">
-                <div class="plus project_color rounded-full h-[30px] w-[30px] overflow-hidden">
-                  <img class="h-[30px] w-[30px] invert"
-                    src="https://static.tildacdn.com/tild3761-3933-4162-b335-333139326538/IconPlus.svg" alt>
-                  <img class="h-[30px] w-[30px] invert"
-                    src="https://static.tildacdn.com/tild3030-3563-4261-b739-666466353663/IconMinus.svg" alt>
-                </div>
-                <p class="text-[var(--white)] text-[28px] pt-[4px] uppercase">Токарево</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="project sokolovo w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[380px]">
-          <div class="tagWrap">
-            <p class="text tag">Лайт индастриал</p>
-          </div>
-          <div class="growing sokolovo flex items-end py-[32px] px-[40px] w-full h-[100px] bg-[var(--pikBlack)] ">
-            <div class="flex flex-col h-full justify-end">
-              <div class="content top-10 left-10 pr-10 flex flex-col">
-                <p class="data pt-5 pr-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">г. Москва, пос.
-                  Краснопахорское, квартал №61</p>
-                <p class="data pt-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">Близость к городу
-                  Троицк. <br>1-я линия ЦКАД</p>
-              </div>
-              <div class="flex gap-2 items-center">
-                <div class="plus project_color rounded-full h-[30px] w-[30px] overflow-hidden">
-                  <img class="h-[30px] w-[30px] invert"
-                    src="https://static.tildacdn.com/tild3761-3933-4162-b335-333139326538/IconPlus.svg" alt>
-                  <img class="h-[30px] w-[30px] invert"
-                    src="https://static.tildacdn.com/tild3030-3563-4261-b739-666466353663/IconMinus.svg" alt>
-                </div>
-                <p class="text-[var(--white)] text-[28px] pt-[4px] uppercase">Соколово</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="project butovo w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[380px]">
-          <div class="tagWrap">
-            <p class="text tag">Лайт индастриал</p>
-          </div>
-          <div class="growing butovo flex items-end py-[32px] px-[40px] w-full h-[100px] bg-[var(--pikBlack)] ">
-            <div class="flex flex-col h-full justify-end">
-              <div class="content top-10 left-10 pr-10 flex flex-col">
-                <p class="data pt-5 pr-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">г. Москва, пос.
-                  Краснопахорское, квартал №61</p>
-                <p class="data pt-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">Близость к городу
-                  Троицк. <br>1-я линия ЦКАД</p>
-              </div>
-              <div class="flex gap-2 items-center">
-                <div class="plus project_color rounded-full h-[30px] w-[30px] overflow-hidden">
-                  <img class="h-[30px] w-[30px] invert"
-                    src="https://static.tildacdn.com/tild3761-3933-4162-b335-333139326538/IconPlus.svg" alt>
-                  <img class="h-[30px] w-[30px] invert"
-                    src="https://static.tildacdn.com/tild3030-3563-4261-b739-666466353663/IconMinus.svg" alt>
-                </div>
-                <p class="text-[var(--white)] text-[28px] pt-[4px] uppercase">Бутово</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
-    </div>
-
     <!-- УК -->
     <div class="SO_Main">
       <div class="O_Company">
@@ -2245,6 +2086,223 @@
       </div>
       <div class="A_RightField"></div>
     </div>
+
+    <!-- наши проекты -->
+     <section id="OurProjects">
+      <div
+        class="flex flex-col max-w-[100vw] w-full U_Padding"
+        data-cards-carousel
+        data-disable-hover="true"
+        data-slider
+        data-mobile-carousel="true"
+        data-mode="translate"
+        data-infinite="false"
+      >
+        <div class="flex flex-row U_Padding U_NavSlider pt-[80px] pb-[40px]">
+          <h2 class="A_SectionTitle max-md:px-[24px]">Наши проекты</h2>
+          <div class="U_Gap5 U_Center flex">
+            <div class="min-[1024px]:hidden flex items-center gap-[8px] max-md:px-[24px]" data-counter>
+              <span class="text-white/60" data-current>0</span>
+              <span class="text-white/60">/</span>
+              <span class="text-white/60" data-total>0</span>
+            </div>
+            <div class="A_Arrow U_Left" data-cards-prev data-prev>
+              <img class="Q_ImageIcon"
+                src="https://optim.tildacdn.com/tild6266-6439-4136-b839-316239636237/-/resize/700x/-/format/webp/arrow-Left.png"
+                alt="" />
+            </div>
+            <div class="A_Arrow U_RightNew" data-cards-next data-next>
+              <img class="Q_ImageIcon"
+                src="https://optim.tildacdn.com/tild3638-3031-4436-b861-373431666664/-/resize/700x/-/format/webp/arrow-Right.png"
+                alt="" />
+            </div>
+          </div>
+        </div>
+      
+        <div class="relative w-full overflow-hidden h-[580px] max-md:h-[496px]">
+          <div
+            class="min-[1024]:flex U_CardsTrack absolute left-0 top-0 min-w-fit w-fit max-w-fit flex flex-row gap-[2px] max-md:gap-[0px]"
+            data-cards-track
+            data-track>
+            <div class="project senkino w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
+              <div class="tagWrap">
+                <p class="text tag">лайт индастриал</p>
+              </div>
+              
+              <div class="growing senkino flex items-end py-[32px] px-[40px] w-full h-[100px] bg-[var(--pikBlack)] ">
+                <div class="flex flex-col h-full justify-end w-full relative">
+                  <div class="content top-0 left-0 flex flex-col w-full">
+                    <p class="data pt-5 pr-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">г. Москва,
+                      пос. Краснопахорское, квартал №61</p>
+                    <p class="data pt-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">Близость к городу
+                      Троицк. <br>1-я линия ЦКАД</p>
+                  </div>
+                  <div class="flex gap-[16px] items-center">
+                    <div class="plus project_color rounded-full h-[30px] w-[30px] overflow-hidden">
+                      <img class="h-[30px] w-[30px] invert"
+                        src="https://static.tildacdn.com/tild3761-3933-4162-b335-333139326538/IconPlus.svg" alt>
+                      <img class="h-[30px] w-[30px] invert"
+                        src="https://static.tildacdn.com/tild3030-3563-4261-b739-666466353663/IconMinus.svg" alt>
+                    </div>
+                    <p class="text-[var(--white)] text-[28px] max-md:text-[20px] pt-[4px] max-md:pt-[2px] uppercase">Сенькино</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project balashiha w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
+              <div class="tagWrap">
+                <p class="text tag">биг бокс</p>
+                <p class="text tag">лайт индастриал</p>
+                <p class="text tag">индивидуальный проект</p>
+                <p class="text tag">флекс бокс</p>
+              </div>
+              <div class="growing balashiha flex items-end py-[32px] px-[40px] w-full h-[100px] bg-[var(--pikBlack)] ">
+                <div class="flex flex-col h-full justify-end w-full relative">
+                  <div class="content top-0 left-0 flex flex-col w-full">
+                    <p class="data pt-5 pr-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">
+                      МО, город Балашиха
+                    </p>
+                    <p class="data pt-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">
+                      15 минут до МКАД, шоссе Энтузиастов
+                    </p>
+                  </div>
+                  <div class="flex gap-[16px] items-center">
+                    <div class="plus project_color rounded-full h-[30px] w-[30px] overflow-hidden">
+                      <img class="h-[30px] w-[30px] invert"
+                        src="https://static.tildacdn.com/tild3761-3933-4162-b335-333139326538/IconPlus.svg" alt>
+                      <img class="h-[30px] w-[30px] invert"
+                        src="https://static.tildacdn.com/tild3030-3563-4261-b739-666466353663/IconMinus.svg" alt>
+                    </div>
+                    <p class="text-[var(--white)] text-[28px] max-md:text-[20px] pt-[4px] max-md:pt-[2px] uppercase">Балашиха</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project kuvekino w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
+              <div class="tagWrap">
+                <p class="text tag">биг бокс</p>
+                <p class="text tag">лайт индастриал</p>
+                <p class="text tag">индивидуальный проект</p>
+                <p class="text tag">флекс бокс</p>
+              </div>
+              <div class="growing kuvekino flex items-end py-[32px] px-[40px] w-full h-[100px] bg-[var(--pikBlack)] ">
+                <div class="flex flex-col h-full justify-end w-full relative">
+                  <div class="content top-0 left-0 flex flex-col w-full">
+                    <p class="data pt-5 pr-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">
+                      г. Москва,
+                      пос. Десеновское, квартал №121
+                    </p>
+                    <p class="data pt-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">
+                      16 км от МКАД по Калужскому или Варшавскому ш.</p>
+                  </div>
+                  <div class="flex gap-[16px] items-center">
+                    <div class="plus project_color rounded-full h-[30px] w-[30px] overflow-hidden">
+                      <img class="h-[30px] w-[30px] invert"
+                        src="https://static.tildacdn.com/tild3761-3933-4162-b335-333139326538/IconPlus.svg" alt>
+                      <img class="h-[30px] w-[30px] invert"
+                        src="https://static.tildacdn.com/tild3030-3563-4261-b739-666466353663/IconMinus.svg" alt>
+                    </div>
+                    <p class="text-[var(--white)] text-[28px] max-md:text-[20px] pt-[4px] max-md:pt-[2px] uppercase">Кувекино</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project tokarevo w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
+              <div class="tagWrap">
+                <p class="text tag">биг бокс</p>
+                <p class="text tag">лайт индастриал</p>
+                <p class="text tag">индивидуальный проект</p>
+                <p class="text tag">флекс бокс</p>
+              </div>
+              <div class="growing tokarevo flex items-end py-[32px] px-[40px] w-full h-[100px] bg-[var(--pikBlack)] ">
+                <div class="flex flex-col h-full justify-end w-full relative">
+                  <div class="content top-0 left-0 flex flex-col w-full">
+                    <p class="data pt-5 pr-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">
+                      Люберецкий район, пос. Томилино, деревня Токарево
+                    </p>
+                    <p class="data pt-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">
+                      10 км от МКАД, 9 км до метро Котельники
+                    </p>
+                    <p class="data pt-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">
+                      Новорязанское шоссе
+                    </p>
+                  </div>
+                  <div class="flex gap-[16px] items-center">
+                    <div class="plus project_color rounded-full h-[30px] w-[30px] overflow-hidden">
+                      <img class="h-[30px] w-[30px] invert"
+                        src="https://static.tildacdn.com/tild3761-3933-4162-b335-333139326538/IconPlus.svg" alt>
+                      <img class="h-[30px] w-[30px] invert"
+                        src="https://static.tildacdn.com/tild3030-3563-4261-b739-666466353663/IconMinus.svg" alt>
+                    </div>
+                    <p class="text-[var(--white)] text-[28px] max-md:text-[20px] pt-[4px] max-md:pt-[2px] uppercase">Токарёво</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project sokolovo w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
+              <div class="tagWrap">
+                <p class="text tag">биг бокс</p>
+                <p class="text tag">лайт индастриал</p>
+                <p class="text tag">индивидуальный проект</p>
+                <p class="text tag">флекс бокс</p>
+              </div>
+              <div class="growing sokolovo flex items-end py-[32px] px-[40px] w-full h-[100px] bg-[var(--pikBlack)] ">
+                <div class="flex flex-col h-full justify-end w-full relative">
+                  <div class="content top-0 left-0 flex flex-col w-full">
+                    <p class="data pt-5 pr-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">
+                      г. Москва, п. Марушинское ОНО ОПХ «Толстопальцево»,
+                      уч. 19
+                    </p>
+                    <p class="data pt-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">
+                      15 км от МКАД, 6 км до метро Внуково
+                    </p>
+                    <p class="data pt-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">
+                      Киевское шоссе, рядом с аэропортом Внуково
+                    </p>
+                  </div>
+                  <div class="flex gap-[16px] items-center">
+                    <div class="plus project_color rounded-full h-[30px] w-[30px] overflow-hidden">
+                      <img class="h-[30px] w-[30px] invert"
+                        src="https://static.tildacdn.com/tild3761-3933-4162-b335-333139326538/IconPlus.svg" alt>
+                      <img class="h-[30px] w-[30px] invert"
+                        src="https://static.tildacdn.com/tild3030-3563-4261-b739-666466353663/IconMinus.svg" alt>
+                    </div>
+                    <p class="text-[var(--white)] text-[28px] max-md:text-[20px] pt-[4px] max-md:pt-[2px] uppercase">Соколово</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project butovo w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
+              <div class="tagWrap">
+                <p class="text tag">биг бокс</p>
+                <p class="text tag">лайт индастриал</p>
+              </div>
+              <div class="growing butovo flex items-end py-[32px] px-[40px] w-full h-[100px] bg-[var(--pikBlack)] ">
+                <div class="flex flex-col h-full justify-end w-full relative">
+                  <div class="content top-0 left-0 flex flex-col w-full">
+                    <p class="data pt-5 pr-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">г. Москва,
+                    г. Москва, Варшавское ш., 268, стр. 1
+                    </p>
+                    <p class="data pt-5 pb-5 border-b-[1px] border-white/25 text-base text-white uppercase">
+                      5 км до МКАД по Варшавскому шоссе
+                    </p>
+                  </div>
+                  <div class="flex gap-[16px] items-center">
+                    <div class="plus project_color rounded-full h-[30px] w-[30px] overflow-hidden">
+                      <img class="h-[30px] w-[30px] invert"
+                        src="https://static.tildacdn.com/tild3761-3933-4162-b335-333139326538/IconPlus.svg" alt>
+                      <img class="h-[30px] w-[30px] invert"
+                        src="https://static.tildacdn.com/tild3030-3563-4261-b739-666466353663/IconMinus.svg" alt>
+                    </div>
+                    <p class="text-[var(--white)] text-[28px] max-md:text-[20px] pt-[4px] max-md:pt-[2px] uppercase">Бутово</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ФОС -->
     <div class="SO_Main">
@@ -3282,6 +3340,8 @@
 
     <!-- smart-captcha -->
     <script type="text/javascript" src="https://smartcaptcha.yandexcloud.net/captcha.js?render=onload&onload=initSmartCaptcha"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=2ed514ec-bf25-455d-a300-0a2f1a4efb26"
       type="text/javascript"></script>
