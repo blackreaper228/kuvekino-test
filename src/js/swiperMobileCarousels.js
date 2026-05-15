@@ -57,9 +57,15 @@ function initOne(sliderRoot) {
   // Prevent double init.
   if (container.__swiperInstance) return container.__swiperInstance;
 
+  const spaceAttr = sliderRoot.getAttribute('data-space-between');
+  const fixedSpaceBetween =
+    spaceAttr != null && spaceAttr !== '' && Number.isFinite(parseInt(spaceAttr, 10))
+      ? parseInt(spaceAttr, 10)
+      : null;
+
   const instance = new Swiper(container, {
     slidesPerView: 'auto',
-    spaceBetween: 0,
+    spaceBetween: fixedSpaceBetween ?? 0,
     loop: false,
     slidesOffsetAfter: 0,
     speed: 380,
@@ -68,10 +74,13 @@ function initOne(sliderRoot) {
     threshold: 5,
     grabCursor: true,
     simulateTouch: true,
-    breakpoints: {
-      0: { spaceBetween: 0 },
-      1024: { spaceBetween: 2 },
-    },
+    breakpoints:
+      fixedSpaceBetween != null
+        ? undefined
+        : {
+            0: { spaceBetween: 0 },
+            1024: { spaceBetween: 2 },
+          },
     preventInteractionOnTransition: false,
     navigation: prevEl && nextEl ? { prevEl, nextEl } : undefined,
     on: {

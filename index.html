@@ -194,25 +194,7 @@
     <div class="O_Ribbon">
       <a style="color: #fff; text-decoration: none">Специальные условия на покупку при 100% оплате</a>
     </div>
-    <style>
-      .O_Ribbon {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        background-color: #bdb7aa;
-        position: fixed;
-        left: 0;
-        top: 80px;
-        z-index: 10;
-        width: 100%;
-        height: 40px;
-        font-size: 14px;
-        color: #fff;
-        font-weight: 500;
-        text-transform: uppercase;
-      }
-    </style>
+    
     <!-- стили шапки -->
     <style>
       * {
@@ -1528,7 +1510,7 @@
           .tv-glass-overlay {
             position: absolute;
             inset: 0;
-            z-index: 99;
+            z-index: 1;
             /* Эффект матового стекла */
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
@@ -1857,41 +1839,46 @@
     ></div>
 
     <!-- преимущества парка, мобилка -->
-    <div class="block max-w-[100vw] w-full U_MobileOnlyShow">
+    <div class="block max-w-[100vw] w-full U_MobileOnlyShow U_MobileAdvantages"
+      data-slider
+      data-mobile-carousel="true"
+      data-mode="translate"
+      data-space-between="2"
+    >
       <div class="W_Row U_Padding U_Horizontal pt-[48px] pb-[24px]">
         <h2 class="A_SectionTitle U_Uppercase U_MobilePaddings U_Black U_Padding U_Horizontal">Преимущества парка Кувекино</h2>
       </div>
-      <div class="W_Row U_Gap2 U_MobileRow">
-        <div class="W_MobileCards" id="U_CardsMobile">
-          <div class="M_CardWithText">
+      <div class="W_Row U_Gap2 U_MobileRow relative w-full overflow-hidden">
+        <div class="W_MobileCards" id="U_CardsMobile" data-track>
+          <div class="M_CardWithText" data-slide>
             <div class="A_CardImage U_MobileHeight U_Parking"></div>
             <div class="W_CardText U_Padding U_Horizontal">
               <div class="h2 U_Black">16 км от МКАД</div>
               <div class="A_BodyText">Комфортный подъезд по Калужскому шоссе, 16 км от МКАД, г.Троицк</div>
             </div>
           </div>
-          <div class="M_CardWithText">
+          <div class="M_CardWithText" data-slide>
             <div class="A_CardImage U_MobileHeight U_Entrence"></div>
             <div class="W_CardText U_Padding U_Horizontal">
               <div class="h2 U_Black">Доступность общественным транспортом</div>
               <div class="A_BodyText">Рядом с парком расположена автобусная остановка до Троицка</div>
             </div>
           </div>
-          <div class="M_CardWithText">
+          <div class="M_CardWithText" data-slide>
             <div class="A_CardImage U_MobileHeight U_Architecture"></div>
             <div class="W_CardText U_Padding U_Horizontal">
               <div class="h2 U_Black">Парковка включена в стоимость</div>
               <div class="A_BodyText">Оптимальное количество парковочных мест для грузового и легкового транспорта</div>
             </div>
           </div>
-          <div class="M_CardWithText">
+          <div class="M_CardWithText" data-slide>
             <div class="A_CardImage U_MobileHeight U_Mesonin"></div>
             <div class="W_CardText U_Padding U_Horizontal">
               <div class="h2 U_Black">Возможность увеличить электрическую мощность</div>
               <div class="A_BodyText">Увеличенные электрические мощности для производственных компаний</div>
             </div>
           </div>
-          <div class="M_CardWithText">
+          <div class="M_CardWithText" data-slide>
             <div class="A_CardImage U_MobileHeight U_Warming"></div>
             <div class="W_CardText U_Padding U_Horizontal">
               <div class="h2 U_Black">Два типа зон погрузки и разгрузки</div>
@@ -1901,14 +1888,14 @@
               </div>
             </div>
           </div>
-          <div class="M_CardWithText">
+          <div class="M_CardWithText" data-slide>
             <div class="A_CardImage U_MobileHeight U_Docs"></div>
             <div class="W_CardText U_Padding U_Horizontal">
               <div class="h2 U_Black">Современная архитектура</div>
               <div class="A_BodyText">Функциональные планировки помещений, возможность зонирования пространства</div>
             </div>
           </div>
-          <div class="M_CardWithText">
+          <div class="M_CardWithText" data-slide>
             <div class="A_CardImage U_MobileHeight U_Powers"></div>
             <div class="W_CardText U_Padding U_Horizontal">
               <div class="h2 U_Black">Отопление и вентиляция</div>
@@ -1917,17 +1904,17 @@
           </div>
         </div>
       </div>
-      <div class="U_MobileNavCarousel">
-        <div class="U_MobileNavCarouselCounter">
-          <div class="A_Counter U_Active U_Black">1</div>
+      <div class="w-full flex justify-between items-center px-[24px] pt-[48px]">
+        <div class="U_MobileNavCarouselCounter" data-counter>
+          <div class="A_Counter U_Active U_Black" data-current>1</div>
           <div class="A_Counter U_Black U_Thin">/</div>
-          <div class="A_Counter U_ProjectColor">7</div>
+          <div class="A_Counter U_ProjectColor" data-total>7</div>
         </div>
         <div class="U_MobileArrows">
-          <div class="A_Arrow U_LeftMobile">
+          <div class="A_Arrow U_LeftMobile" data-prev>
             <img class="Q_ImageIcon" src="https://optim.tildacdn.com/tild6266-6439-4136-b839-316239636237/-/resize/700x/-/format/webp/arrow-Left.png" alt="" />
           </div>
-          <div class="A_Arrow U_RightMobile">
+          <div class="A_Arrow U_RightMobile" data-next>
             <img class="Q_ImageIcon" src="https://optim.tildacdn.com/tild3638-3031-4436-b861-373431666664/-/resize/700x/-/format/webp/arrow-Right.png" alt="" />
           </div>
         </div>
@@ -2136,11 +2123,10 @@
             class="min-[1024]:flex U_CardsTrack absolute left-0 top-0 min-w-fit w-fit max-w-fit flex flex-row"
             data-cards-track
             data-track>
-            <div class="project senkino w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
+            <a href="https://senkino-prom.ru/" class="project senkino w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
               <div class="tagWrap">
                 <p class="text tag">лайт индастриал</p>
               </div>
-              
               <div class="growing senkino flex items-end py-[32px] px-[40px] w-full h-[100px] bg-[var(--pikBlack)] ">
                 <div class="flex flex-col h-full justify-end w-full relative">
                   <div class="content top-0 left-0 flex flex-col w-full">
@@ -2160,8 +2146,8 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="project balashiha w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
+            </a>
+            <a href="https://balashiha-prom.ru/" class="project balashiha w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
               <div class="tagWrap">
                 <p class="text tag">биг бокс</p>
                 <p class="text tag">лайт индастриал</p>
@@ -2189,8 +2175,8 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="project kuvekino w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
+            </a>
+            <a href="https://kuvekino-prom.ru/" class="project kuvekino w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
               <div class="tagWrap">
                 <p class="text tag">биг бокс</p>
                 <p class="text tag">лайт индастриал</p>
@@ -2218,8 +2204,8 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="project tokarevo w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
+            </a>
+            <a href="https://tokarevo-prom.ru/" class="project tokarevo w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
               <div class="tagWrap">
                 <p class="text tag">биг бокс</p>
                 <p class="text tag">лайт индастриал</p>
@@ -2250,8 +2236,8 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="project sokolovo w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
+            </a>
+            <a href="https://sokolovo-prom.ru/" class="project sokolovo w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
               <div class="tagWrap">
                 <p class="text tag">биг бокс</p>
                 <p class="text tag">лайт индастриал</p>
@@ -2283,8 +2269,8 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="project butovo w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
+            </a>
+            <a href="https://parametr.space/project/butovo" class="project butovo w-[440px] flex-shrink-0 max-[1024px]:w-[100vw] h-[580px] max-md:h-[496px]" data-slide>
               <div class="tagWrap">
                 <p class="text tag">биг бокс</p>
                 <p class="text tag">лайт индастриал</p>
@@ -2310,7 +2296,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
