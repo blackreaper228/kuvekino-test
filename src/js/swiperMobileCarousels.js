@@ -61,6 +61,7 @@ function initOne(sliderRoot) {
     slidesPerView: 'auto',
     spaceBetween: 0,
     loop: false,
+    slidesOffsetAfter: 0,
     speed: 380,
     resistanceRatio: 0.85,
     followFinger: true,
@@ -102,6 +103,17 @@ function initAll() {
   roots.forEach((r) => initOne(r));
 }
 
+/** Re-init one carousel (e.g. after dynamic HTML from history.js). Exposed on window for Tilda. */
+function initKuvekinoSwiperCarousel(root) {
+  if (root) {
+    destroyOne(root);
+    return initOne(root);
+  }
+  initAll();
+}
+
+window.initKuvekinoSwiperCarousel = initKuvekinoSwiperCarousel;
+
 function refreshOnResize() {
   const roots = Array.from(document.querySelectorAll('[data-slider][data-mobile-carousel="true"]'));
   roots.forEach((r) => {
@@ -121,4 +133,3 @@ if (document.readyState === 'loading') {
 
 window.addEventListener('resize', refreshOnResize);
 window.addEventListener('orientationchange', refreshOnResize);
-

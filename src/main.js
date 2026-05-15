@@ -5,15 +5,18 @@ import './js/history.js';
 import './js/accordion.js';
 import './js/cards.js';
 import './js/swiperMobileCarousels.js';
+import './js/gallery.js';
 import './js/map.js';
+import './js/scrollToTop.js';
 
 
-//вывод текущего года в футере
 
-const year = new Date().getFullYear();
-document.getElementById('footerCopyrightYear').textContent = `© ${year} Parametr`;
+// //вывод текущего года в футере
 
-    // Отключение hover эффектов на мобильных устройствах
+// const year = new Date().getFullYear();
+// document.getElementById('footerCopyrightYear').textContent = `© ${year} Parametr`;
+
+// Отключение hover эффектов на мобильных устройствах
 let hoverHandlersAdded = false;
 
 function disableHoverOnMobile() {
